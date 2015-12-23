@@ -1,7 +1,6 @@
 /*
 programer         :aiswarya
 aim               :median of linked list using slow poiter and fast pointer
-time complexity	  : O(n)
 */
 #include<stdio.h>
 #include<conio.h>
@@ -11,14 +10,14 @@ time complexity	  : O(n)
 
 struct linkedList{
 	int value;
-	int link;
+	struct linkedList* link;
 };
 
 void insertIntoLinkedlist(int input, struct linkedList *head){
 	struct linkedList *insert;
+	struct linkedList *newNode = (struct linkedList *)malloc(sizeof(struct linkedList *));
 	for (insert = head; insert->link != NULL; insert = insert->link){}
 	//insert at last node
-	struct linkedList *newNode = (struct linkedList *)malloc(sizeof(struct linkedList *));
 	newNode->value = input;
 	newNode->link = NULL;
 	insert->link = newNode;
@@ -46,8 +45,8 @@ float findMedian(struct linkedList *head){
 
 void main(){
 	struct linkedList *head = (struct linkedList *)malloc(sizeof(struct linkedList *));
-	head->link = NULL;
 	int input=0,len,iter;
+	head->link = NULL;
 	//taking inputs
 	printf_s("enter length of linked list");
 	scanf_s("%d", &len);
@@ -58,7 +57,7 @@ void main(){
 			insertIntoLinkedlist(input, head);
 		}
 		//finding median
-		printf("%f", findMedian(head));
+		printf("%.1f", findMedian(head));
 	}
 	_getch();
 }
