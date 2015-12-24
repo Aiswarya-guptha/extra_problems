@@ -16,12 +16,12 @@ struct linkedList{
 void makeLinkedList(int *arr,int len,struct linkedList* head){
 	int iter;
 	head->link=NULL;
-	for(iter=0;iter<len;iter++){
+	while(0<len){
 		struct linkedList* node=(struct linkedList*)malloc(sizeof(struct linkedList));
-		node->data=arr[iter];
-		node->link=NULL;
+		node->data=arr[len-1];
+		node->link=head->link;
 		head->link=node;
-		head=head->link;
+		len--;
 	}
 }
 //print the linked list at head
